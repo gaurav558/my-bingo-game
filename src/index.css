@@ -1,11 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
-  --color-marked: #dcfce7;
-  --color-marked-border: #22c55e;
-  --color-bingo: #fbbf24;
+  /* Coffee Shop Color Palette */
+  --color-espresso: #2C1810;
+  --color-coffee: #4A2C1A;
+  --color-mocha: #6F4E37;
+  --color-latte: #C8A882;
+  --color-milk: #F5EDE0;
+  --color-foam: #FAF7F2;
+  
+  /* Accent Colors */
+  --color-cinnamon: #D2691E;
+  --color-caramel: #D9A566;
+  --color-crema: #E8B864;
+  --color-mint: #98C9A3;
+  
+  /* Legacy mappings for existing components */
+  --color-accent: #6F4E37;
+  --color-accent-light: #D2691E;
+  --color-marked: #F5EDE0;
+  --color-marked-border: #D9A566;
+  --color-bingo: #E8B864;
+  
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Quicksand', system-ui, sans-serif;
+  --font-hand: 'Caveat', cursive;
 }
 
 html,
@@ -16,6 +37,72 @@ body,
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   -webkit-tap-highlight-color: transparent;
+  background: var(--color-foam);
+}
+
+/* Coffee bean background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(111, 78, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(111, 78, 55, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes wiggle {
+  0%, 100% {
+    transform: translateX(0) scaleY(1);
+    opacity: 0.2;
+  }
+  25% {
+    transform: translateX(-3px) scaleY(1.1);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translateX(3px) scaleY(0.9);
+    opacity: 0.1;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(232, 184, 100, 0.5), 0 0 20px rgba(232, 184, 100, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(232, 184, 100, 0.8), 0 0 30px rgba(232, 184, 100, 0.5);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }

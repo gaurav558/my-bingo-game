@@ -157,7 +157,7 @@ Please check our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](COD
 
 ## 📄 License
 
-MIT © [Harald Kirschner](https://github.com/gaurav558)
+MIT © [gaurav558](https://github.com/gaurav558)
 
 ---
 

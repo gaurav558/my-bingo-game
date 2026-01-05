@@ -17,48 +17,59 @@ export function GameScreen({
   onReset,
 }: GameScreenProps) {
   return (
-    <div className="flex flex-col min-h-full bg-gradient-to-b from-[#C8A882] to-[#F5EDE0]">
-      {/* Coffee shop menu bar header */}
-      <header className="flex items-center justify-between p-4 bg-gradient-to-r from-[#4A2C1A] to-[#6F4E37] border-b-4 border-[#2C1810] shadow-lg">
+    <div className="flex flex-col min-h-full relative overflow-hidden">
+      {/* Ambient gradient orbs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-20 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full opacity-20 blur-3xl"></div>
+      
+      {/* Glass header */}
+      <header className="relative flex items-center justify-between p-4
+                         bg-white/10 backdrop-blur-xl
+                         border-b border-white/20
+                         shadow-[0_4px_16px_0_rgba(31,38,135,0.2)]">
         <button
           onClick={onReset}
-          className="text-[#F5EDE0] text-sm px-4 py-2 rounded-lg 
-                     bg-[#6F4E37] border-2 border-[#C8A882]
-                     transition-all duration-200
-                     hover:bg-[#D2691E] hover:-translate-x-1
+          className="text-white text-sm px-5 py-2.5 rounded-xl font-medium
+                     bg-white/15 backdrop-blur-sm
+                     border border-white/30
+                     transition-all duration-300
+                     hover:bg-white/25 hover:-translate-x-1 hover:shadow-lg
                      active:translate-x-0"
           style={{ fontFamily: 'var(--font-body)' }}
         >
           ← Back
         </button>
-        <h1 className="font-bold text-[#FAF7F2] text-xl tracking-wide drop-shadow-md" 
+        <h1 className="font-bold text-white text-xl tracking-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]" 
             style={{ fontFamily: 'var(--font-display)' }}>
-          Soc Ops Café
+          Soc Ops
         </h1>
         <div className="w-20"></div>
       </header>
 
-      {/* Handwritten instructions on cream paper */}
-      <div className="bg-[#F5EDE0] shadow-sm">
-        <p className="text-center text-[#4A2C1A] text-sm py-3 px-4" 
-           style={{ fontFamily: 'var(--font-hand)', fontSize: '1rem' }}>
-          Tap a square when you find someone who matches it ☕
+      {/* Glass instructions banner */}
+      <div className="relative bg-white/10 backdrop-blur-md border-b border-white/10">
+        <p className="text-center text-white/90 text-sm py-3 px-4 font-medium" 
+           style={{ fontFamily: 'var(--font-body)' }}>
+          Tap a square when you find someone who matches it ✨
         </p>
       </div>
 
-      {/* Bingo celebration banner */}
+      {/* Bingo celebration banner with glass effect */}
       {hasBingo && (
-        <div className="bg-gradient-to-r from-[#E8B864] via-[#D9A566] to-[#E8B864] 
-                        text-[#2C1810] text-center py-3 font-bold text-base
-                        shadow-lg border-y-2 border-[#D2691E]
+        <div className="relative bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500
+                        text-white text-center py-4 font-bold text-base
+                        shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
+                        border-y border-white/30
+                        backdrop-blur-sm
                         animate-[pulse_1.5s_ease-in-out_infinite]"
              style={{ fontFamily: 'var(--font-display)' }}>
-          🎉 BINGO! You got a line! ☕
+          <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+          <span className="relative z-10">🎉 BINGO! You got a line! ✨</span>
         </div>
       )}
 
-      {/* Bingo board on cafe table */}
-      <div className="flex-1 flex items-center justify-center p-4">
+      {/* Bingo board container */}
+      <div className="flex-1 flex items-center justify-center p-4 relative z-10">
         <BingoBoard
           board={board}
           winningSquareIds={winningSquareIds}

@@ -5,78 +5,80 @@ interface StartScreenProps {
 export function StartScreen({ onStart }: StartScreenProps) {
   return (
     <div className="flex flex-col items-center justify-center min-h-full p-6 relative overflow-hidden">
-      {/* Coffee shop gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#4A2C1A] via-[#6F4E37] to-[#4A2C1A] opacity-95"></div>
-      
-      {/* Decorative coffee steam animation */}
-      <div className="absolute top-20 right-1/4 opacity-20">
-        <div className="w-1 h-24 bg-[#F5EDE0] rounded-full animate-[wiggle_3s_ease-in-out_infinite]" 
-             style={{ animationDelay: '0s' }}></div>
-      </div>
-      <div className="absolute top-24 right-[27%] opacity-15">
-        <div className="w-1 h-20 bg-[#F5EDE0] rounded-full animate-[wiggle_3s_ease-in-out_infinite]" 
-             style={{ animationDelay: '0.5s' }}></div>
-      </div>
+      {/* Floating gradient orbs */}
+      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-30 blur-3xl animate-[float_6s_ease-in-out_infinite]"></div>
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full opacity-25 blur-3xl animate-[float_8s_ease-in-out_infinite]" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-pink-300 to-purple-400 rounded-full opacity-20 blur-3xl animate-[float_10s_ease-in-out_infinite]" style={{ animationDelay: '4s' }}></div>
       
       {/* Content */}
-      <div className="text-center max-w-sm relative z-10">
-        {/* Coffee cup icon */}
-        <div className="mb-6 text-6xl animate-[bounce_2s_ease-in-out_infinite]" 
-             style={{ animationDelay: '0.5s' }}>
-          ☕
+      <div className="text-center max-w-lg relative z-10">
+        {/* Glass icon container */}
+        <div className="mb-8 inline-block p-6 rounded-3xl
+                        bg-white/10 backdrop-blur-xl
+                        border border-white/30
+                        shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
+                        animate-[float_4s_ease-in-out_infinite]">
+          <div className="text-7xl">✨</div>
         </div>
         
-        <h1 className="text-5xl font-bold text-[#FAF7F2] mb-2 drop-shadow-lg" 
-            style={{ fontFamily: 'var(--font-display)' }}>
+        <h1 className="text-6xl font-extrabold text-white mb-3 drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]" 
+            style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>
           Soc Ops
         </h1>
-        <p className="text-xl text-[#E8B864] mb-8 tracking-wide" 
-           style={{ fontFamily: 'var(--font-hand)' }}>
-          Social Bingo Café
+        <p className="text-2xl text-white/90 mb-10 font-medium tracking-wide"
+           style={{ fontFamily: 'var(--font-body)' }}>
+          Social Bingo
         </p>
         
-        {/* How to play card - paper texture effect */}
-        <div className="bg-[#F5EDE0] rounded-2xl p-6 shadow-2xl border-2 border-[#C8A882] mb-8 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_40px_rgba(44,24,16,0.3)]">
-          <h2 className="font-bold text-[#2C1810] mb-4 text-lg" 
+        {/* Glass card - How to play */}
+        <div className="bg-white/15 backdrop-blur-xl rounded-3xl p-8 mb-8
+                        border border-white/30
+                        shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
+                        transform transition-all duration-500
+                        hover:bg-white/20 hover:scale-[1.02] hover:shadow-[0_8px_40px_0_rgba(31,38,135,0.5)]">
+          <h2 className="font-bold text-white mb-6 text-xl" 
               style={{ fontFamily: 'var(--font-display)' }}>
             How to Play
           </h2>
-          <ul className="text-left text-[#4A2C1A] text-sm space-y-3">
-            <li className="flex items-start gap-2">
-              <span className="text-[#D2691E] font-bold">☕</span>
-              <span>Find people who match the questions</span>
+          <ul className="text-left text-white/90 text-base space-y-4">
+            <li className="flex items-start gap-3">
+              <span className="text-2xl">✨</span>
+              <span className="pt-1">Find people who match the questions</span>
             </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#D2691E] font-bold">☕</span>
-              <span>Tap a square when you find a match</span>
+            <li className="flex items-start gap-3">
+              <span className="text-2xl">🎯</span>
+              <span className="pt-1">Tap a square when you find a match</span>
             </li>
-            <li className="flex items-start gap-2">
-              <span className="text-[#D2691E] font-bold">☕</span>
-              <span>Get 5 in a row to win!</span>
+            <li className="flex items-start gap-3">
+              <span className="text-2xl">🏆</span>
+              <span className="pt-1">Get 5 in a row to win!</span>
             </li>
           </ul>
         </div>
 
-        {/* Start button with coffee shop vibe */}
+        {/* Glass button with gradient */}
         <button
           onClick={onStart}
-          className="w-full bg-[#6F4E37] text-[#FAF7F2] font-bold py-4 px-8 rounded-xl text-lg 
-                     shadow-lg border-2 border-[#4A2C1A]
-                     transition-all duration-200 
-                     hover:bg-[#D2691E] hover:shadow-2xl hover:-translate-y-1
-                     active:translate-y-0 active:shadow-md"
-          style={{ fontFamily: 'var(--font-body)' }}
+          className="group relative w-full overflow-hidden
+                     bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500
+                     text-white font-bold py-5 px-8 rounded-2xl text-lg
+                     shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
+                     border border-white/30
+                     transition-all duration-300
+                     hover:shadow-[0_8px_40px_0_rgba(102,126,234,0.6)] hover:scale-[1.02] hover:-translate-y-1
+                     active:translate-y-0 active:scale-100"
+          style={{ fontFamily: 'var(--font-display)' }}
         >
-          Start Brewing ☕
+          {/* Glass overlay */}
+          <div className="absolute inset-0 bg-white/10 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span className="relative z-10">Start Game ✨</span>
         </button>
       </div>
       
-      {/* Coffee bean decorations */}
-      <div className="absolute bottom-10 left-10 text-4xl opacity-10 animate-[spin_20s_linear_infinite]">🫘</div>
-      <div className="absolute top-32 left-16 text-3xl opacity-10 animate-[spin_25s_linear_infinite_reverse]">🫘</div>
-      <div className="absolute bottom-32 right-20 text-5xl opacity-10 animate-[spin_30s_linear_infinite]">🫘</div>
+      {/* Decorative glass orbs */}
+      <div className="absolute top-1/4 right-12 w-4 h-4 rounded-full bg-white/40 backdrop-blur-sm border border-white/60 animate-[float_5s_ease-in-out_infinite]"></div>
+      <div className="absolute top-1/3 left-20 w-3 h-3 rounded-full bg-white/30 backdrop-blur-sm border border-white/50 animate-[float_7s_ease-in-out_infinite]" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute bottom-1/4 left-16 w-5 h-5 rounded-full bg-white/35 backdrop-blur-sm border border-white/55 animate-[float_6s_ease-in-out_infinite]" style={{ animationDelay: '3s' }}></div>
     </div>
   );
 }
-
-/* Add wiggle animation to index.css later */

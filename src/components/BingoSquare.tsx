@@ -8,55 +8,60 @@ interface BingoSquareProps {
 
 export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
   const baseClasses =
-    'relative flex items-center justify-center p-2 text-center rounded-lg ' +
-    'transition-all duration-200 select-none min-h-[60px] leading-tight ' +
-    'border-2 shadow-md';
+    'relative flex items-center justify-center p-2 text-center rounded-xl ' +
+    'transition-all duration-300 select-none min-h-[60px] leading-tight ';
 
   const stateClasses = square.isMarked
     ? isWinning
-      ? 'bg-[#E8B864] border-[#D2691E] text-[#2C1810] shadow-lg shadow-[#E8B864]/50 ' +
-        'animate-[glow_1.5s_ease-in-out_infinite]'
-      : 'bg-[#D9A566] border-[#C8A882] text-[#2C1810] shadow-md'
-    : 'bg-[#FAF7F2] border-[#C8A882] text-[#4A2C1A] shadow-sm ' +
-      'hover:bg-[#F5EDE0] hover:shadow-lg hover:-translate-y-0.5 ' +
-      'active:translate-y-0 active:shadow-sm';
+      ? 'bg-gradient-to-br from-purple-400 via-pink-400 to-blue-400 text-white ' +
+        'border border-white/40 backdrop-blur-sm ' +
+        'shadow-[0_0_20px_rgba(249,147,251,0.6)] ' +
+        'animate-[glassGlow_1.5s_ease-in-out_infinite]'
+      : 'bg-white/30 backdrop-blur-md text-white ' +
+        'border border-white/40 ' +
+        'shadow-[0_4px_16px_0_rgba(31,38,135,0.2)]'
+    : 'bg-white/15 backdrop-blur-md text-white/90 ' +
+      'border border-white/30 ' +
+      'shadow-[0_4px_16px_0_rgba(31,38,135,0.15)] ' +
+      'hover:bg-white/25 hover:shadow-[0_4px_20px_0_rgba(31,38,135,0.25)] hover:scale-105 ' +
+      'active:scale-100 active:shadow-[0_4px_16px_0_rgba(31,38,135,0.15)]';
 
   const freeSpaceClasses = square.isFreeSpace 
-    ? 'font-bold text-base bg-gradient-to-br from-[#E8B864] to-[#D9A566] border-[#D2691E]' 
-    : 'text-xs';
+    ? 'font-extrabold text-lg bg-gradient-to-br from-yellow-300 via-pink-300 to-purple-300 text-purple-900 border-white/50' 
+    : 'text-xs font-semibold';
 
   return (
     <button
       onClick={onClick}
       disabled={square.isFreeSpace}
       className={`${baseClasses} ${stateClasses} ${freeSpaceClasses}`}
-      style={{ fontFamily: square.isFreeSpace ? 'var(--font-hand)' : 'var(--font-body)' }}
+      style={{ fontFamily: 'var(--font-body)' }}
       aria-pressed={square.isMarked}
       aria-label={square.isFreeSpace ? 'Free space' : square.text}
     >
-      {/* Paper texture overlay */}
+      {/* Subtle gradient overlay */}
       {!square.isFreeSpace && (
-        <div className="absolute inset-0 rounded-lg opacity-30 pointer-events-none"
-             style={{
-               backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence baseFrequency=\'0.9\' numOctaves=\'4\'/%3E%3C/filter%3E%3Crect width=\'100\' height=\'100\' filter=\'url(%23noise)\' opacity=\'0.05\'/%3E%3C/svg%3E")',
-             }}
-        ></div>
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none"></div>
       )}
       
-      <span className="relative z-10 wrap-break-word hyphens-auto font-medium">
+      <span className="relative z-10 wrap-break-word hyphens-auto">
         {square.text}
       </span>
       
-      {/* Coffee bean stamp checkmark */}
+      {/* Glass checkmark badge */}
       {square.isMarked && !square.isFreeSpace && (
-        <span className="absolute -top-1 -right-1 text-[#6F4E37] text-base bg-[#F5EDE0] rounded-full w-5 h-5 flex items-center justify-center border-2 border-[#6F4E37] font-bold shadow-sm">
+        <span className="absolute -top-1.5 -right-1.5 text-white text-sm
+                         bg-gradient-to-br from-green-400 to-emerald-500
+                         rounded-full w-6 h-6 flex items-center justify-center
+                         border-2 border-white/60 font-bold
+                         shadow-[0_4px_16px_0_rgba(16,185,129,0.4)]">
           ✓
         </span>
       )}
       
-      {/* Coffee stain ring for free space */}
+      {/* Sparkle effect for free space */}
       {square.isFreeSpace && (
-        <div className="absolute inset-0 rounded-lg border-4 border-[#4A2C1A] opacity-20 pointer-events-none"></div>
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/20 to-transparent pointer-events-none"></div>
       )}
     </button>
   );

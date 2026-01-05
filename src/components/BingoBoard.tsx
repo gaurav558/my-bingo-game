@@ -10,18 +10,24 @@ interface BingoBoardProps {
 export function BingoBoard({ board, winningSquareIds, onSquareClick }: BingoBoardProps) {
   return (
     <div className="w-full max-w-md mx-auto">
-      {/* Wooden coffee table frame */}
-      <div className="bg-gradient-to-br from-[#4A2C1A] to-[#6F4E37] p-4 rounded-3xl shadow-2xl border-4 border-[#2C1810]">
-        {/* Inner bingo grid */}
-        <div className="grid grid-cols-5 gap-1.5 p-2 bg-[#C8A882] rounded-2xl aspect-square">
-          {board.map((square) => (
-            <BingoSquare
-              key={square.id}
-              square={square}
-              isWinning={winningSquareIds.has(square.id)}
-              onClick={() => onSquareClick(square.id)}
-            />
-          ))}
+      {/* Glass frame with gradient border */}
+      <div className="relative p-1 rounded-3xl bg-gradient-to-br from-purple-400 via-pink-400 to-blue-400">
+        {/* Inner glass container */}
+        <div className="bg-white/10 backdrop-blur-2xl p-4 rounded-[1.375rem]
+                        border border-white/30
+                        shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]">
+          {/* Bingo grid */}
+          <div className="grid grid-cols-5 gap-2 p-2 rounded-2xl aspect-square
+                          bg-white/5 backdrop-blur-sm">
+            {board.map((square) => (
+              <BingoSquare
+                key={square.id}
+                square={square}
+                isWinning={winningSquareIds.has(square.id)}
+                onClick={() => onSquareClick(square.id)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

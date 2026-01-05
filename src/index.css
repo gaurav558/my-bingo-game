@@ -59,7 +59,7 @@ body::before {
   z-index: 1;
 }
 
-/* Glassmorphism Animations */
+/* Animations */
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;

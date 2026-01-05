@@ -23,6 +23,44 @@ React 19 + TypeScript + Vite + Tailwind v4. Social bingo game: find people match
 
 **Styling**: Tailwind v4 `@theme` directive in `index.css` for custom colors (`--color-marked`, `--color-marked-border`).
 
+## Design Guide ☕
+**Theme**: Cozy Coffee Shop
+
+**Color Palette**
+- Espresso: `#2c1810` (deep brown backgrounds, rich depth)
+- Mocha: `#4a2c1a` (secondary browns)
+- Coffee: `#6f4e37` (main coffee color)
+- Latte: `#d4a574` (warm backgrounds)
+- Caramel: `#c8a882` (marked squares)
+- Cream: `#f5f0e8` (paper texture)
+- Crema: `#e8b86d` (golden accents)
+
+**Typography**
+- Headings: Playfair Display (elegant serif, artisanal cafe feel)
+- Body: Quicksand (friendly rounded sans-serif)
+- Accents: Caveat (handwritten, coffee shop chalkboard style)
+
+**Visual Elements**
+- Steam animations (wiggling opacity shifts)
+- Coffee coaster-styled bingo squares with subtle textures
+- Rich gradients for depth and warmth
+- Winning squares glow golden (crema color)
+- Paper-textured cards with coffee stain rings
+- Wooden coffee table aesthetic for board frame
+
+**Component Themes**
+- StartScreen: Coffee shop entrance with steam wisps
+- BingoSquare: Cream paper coasters with caramel marked state
+- BingoModal: Premium reward card with coffee mist backdrop
+- Free space: Handwritten "FREE" with Caveat font
+
+**Animations**
+- Steam wisps: Subtle wiggle and opacity changes
+- Buttons: Lift on hover with smooth shadows
+- Modal: Slide-up entry with backdrop blur
+- Winning squares: Golden pulsing glow
+- Coffee beans: Gentle rotation
+
 ## Testing
 Vitest with jsdom. Mock `Math.random` when testing board generation. Tests co-located: `*.test.ts`.
 
